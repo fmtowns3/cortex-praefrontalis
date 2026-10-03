@@ -1,0 +1,16 @@
+{
+  "name": "cortex-praefrontalis",
+  "owner": {
+    "name": "fmtowns3"
+  },
+  "metadata": {
+    "description": "Working memory for Claude Code: the recent conversation, verbatim, after compaction and restarts."
+  },
+  "plugins": [
+    {
+      "name": "cortex-praefrontalis",
+      "source": "./",
+      "description": "Hands the latest 10,000 characters of the conversation back to Claude, verbatim, after compaction, /clear and a new session."
+    }
+  ]
+}

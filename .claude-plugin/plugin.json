@@ -1,0 +1,25 @@
+{
+  "name": "cortex-praefrontalis",
+  "version": "0.1.0",
+  "description": "Hands the latest 10,000 characters of the conversation back to Claude, verbatim, after compaction, /clear and a new session. No summaries, no LLM, no extra files.",
+  "author": {
+    "name": "fmtowns3"
+  },
+  "repository": "https://github.com/fmtowns3/cortex-praefrontalis",
+  "license": "MIT",
+  "keywords": ["compaction", "context", "memory", "hooks", "working-memory"],
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "for p in python3 python; do \"$p\" -c 'import sys; sys.exit(sys.version_info < (3, 8))' 2>/dev/null && exec \"$p\" \"${CLAUDE_PLUGIN_ROOT}/cortex_praefrontalis.py\"; done; exit 0",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -38,6 +38,7 @@ NOISE_PREFIXES = (
 )
 SYSTEM_REMINDER = re.compile(r"<system-reminder>.*?</system-reminder>", re.S)
 PASTE_TAG = re.compile(r"</?pasted_content[^>]*>")
+SLASH_COMMAND = re.compile(r"/[A-Za-z][\w:-]*")     # 「/compact」だけの行
 
 
 def budget() -> int:
@@ -100,6 +101,8 @@ def message_of(row: dict) -> tuple[str, str, str] | None:
         return None
     text = clean(text_of(content))
     if not text or text.startswith(NOISE_PREFIXES):
+        return None
+    if kind == "user" and SLASH_COMMAND.fullmatch(text):
         return None
     when = stamp(row.get("timestamp")) if kind == "user" else ""
     return kind, when, text
@@ -185,7 +188,8 @@ def main() -> int:
     msgs = tail_messages(path, limit)
     text = render(source, path, msgs, limit)
     if text:
-        sys.stdout.reconfigure(encoding="utf-8")
+        # newline="\n": Windows で \r\n にされると字数が増えて上限を超える
+        sys.stdout.reconfigure(encoding="utf-8", newline="\n")
         sys.stdout.write(text)
     return 0
 

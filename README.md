@@ -1,6 +1,7 @@
 # cortex-praefrontalis
 
-Working memory for Claude Code.
+A plugin that gives Claude Code a prefrontal cortex: of sensory, short-term,
+working and long-term memory, it adds the **working memory**.
 
 After compaction, `/clear`, or a new session, Claude forgets what you were just
 talking about. This plugin hands the latest **10,000 characters of the conversation**
@@ -75,7 +76,8 @@ MIT. See [LICENSE](LICENSE).
 
 # 日本語
 
-Claude Code の作業記憶です。
+Claude Code に前頭前野（「感覚記憶」「短期記憶」「作業記憶」「長期記憶」のうちの
+**作業記憶**）を付与する plugin です。
 
 圧縮や `/clear`、新しいセッションのあと、Claude は直前まで何を話していたかを忘れます。
 この plugin は、**直前の会話の最後の 1 万字**を、**原文のまま**、`SessionStart` hook で

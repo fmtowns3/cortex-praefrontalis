@@ -67,10 +67,11 @@ Set `CORTEX_PRAEFRONTALIS_CHARS` to send less (1,000 to 10,000; default 10,000).
 - **"Previous session" is the newest other transcript in the project folder.** With
   two sessions open in the same project at once, it may pick the other one.
 - The transcript format is not a public API. A Claude Code update can change it.
+- **Tested on Windows only.**
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE). If you can give it a try, please do.
 
 * * *
 
@@ -144,7 +145,8 @@ Python 3.8 以降が `python3` または `python` として `PATH` にあるこ�
   です。** 同じプロジェクトで 2 つのセッションを同時に開いていると、もう片方を拾うことが
   あります。
 - transcript の形式は公開 API ではありません。Claude Code の更新で変わる可能性があります。
+- **確かめたのは Windows OS のみです。**
 
 ## ライセンス
 
-MIT。[LICENSE](LICENSE) を参照してください。
+MIT です。[LICENSE](LICENSE) を参照してください。お試しいただける方、ぜひ。

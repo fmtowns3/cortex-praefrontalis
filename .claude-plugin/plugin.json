@@ -1,6 +1,6 @@
 {
   "name": "cortex-praefrontalis",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hands the latest 10,000 characters of the conversation back to Claude, verbatim, after compaction, /clear and a new session. No summaries, no LLM, no extra files.",
   "author": {
     "name": "Artificial Idiot",

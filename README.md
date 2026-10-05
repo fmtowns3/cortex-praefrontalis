@@ -15,6 +15,10 @@ back to Claude, **verbatim**, through a `SessionStart` hook.
 
 ## Why
 
+What hurts about compaction is not that it forgets. It flattens time: the exchange
+from three days ago and the one from a line ago are squeezed into the same summary,
+at the same resolution. This plugin keeps the nearest part as it was.
+
 Most compaction helpers write a better summary. This one doesn't summarize at all.
 It picks by *kind*, not by *importance*: the conversation is kept as is, everything
 else is dropped. Nothing has to decide what mattered, so nothing can get it wrong.
@@ -43,7 +47,14 @@ Or try it without installing:
 claude --plugin-dir /path/to/cortex-praefrontalis
 ```
 
-Requires Python 3.8 or later on `PATH` as `python3` or `python`. No packages.
+`plugin install` uses the `user` scope by default, so the plugin is active in every
+project. Add `--scope project` to install it for one project only.
+
+Requires:
+
+- Python 3.8 or later on `PATH` as `python3` or `python`. No packages.
+- On Windows, Git for Windows (Git Bash). The hook command is written for `bash`;
+  without Git Bash, Claude Code runs hooks in PowerShell and this one does not start.
 
 ## What it does
 
@@ -92,6 +103,9 @@ Claude に渡します。
 
 ## なぜ
 
+圧縮の何が困るのか。忘れることそのものではなく、3 日前の冒頭のやりとりも、1 行前の
+やりとりも、同列に要約してしまうことです。この plugin は、いちばん近い側をそのまま残します。
+
 圧縮を助ける道具の多くは、より良い要約を書こうとします。これは要約そのものをしません。
 *重要さ*ではなく*種類*で選びます。会話はそのまま残し、それ以外は全部落とします。
 何が大事だったかを誰も判定しないので、判定を誤ることもありません。
@@ -120,8 +134,15 @@ claude plugin install cortex-praefrontalis@cortex-praefrontalis
 claude --plugin-dir /path/to/cortex-praefrontalis
 ```
 
-Python 3.8 以降が `python3` または `python` として `PATH` にあること。追加パッケージは
-要りません。
+`plugin install` の既定は `user` スコープなので、どのプロジェクトでも有効になります。
+1 つのプロジェクトだけに入れるには `--scope project` を付けます。
+
+動作要件：
+
+- Python 3.8 以降が `python3` または `python` として `PATH` にあること。追加パッケージは
+  要りません。
+- Windows では Git for Windows（Git Bash）。hook のコマンドは `bash` 向けに書いてあります。
+  Git Bash が無いと Claude Code は hook を PowerShell で実行し、この hook は起動しません。
 
 ## 動作
 

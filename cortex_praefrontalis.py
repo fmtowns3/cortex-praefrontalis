@@ -175,7 +175,9 @@ def render(source: str, path: Path, msgs: list[tuple[str, str, str]], limit: int
 
 def main() -> int:
     try:
-        data = json.load(sys.stdin)
+        # bytes で読んで UTF-8 と決め打つ。Windows の既定（cp932 など）で読むと、
+        # パスに非 ASCII があるとき transcript_path が化けて、何も渡せずに終わる
+        data = json.loads(sys.stdin.buffer.read().decode("utf-8"))
     except ValueError:
         return 0
     source = data.get("source", "")
